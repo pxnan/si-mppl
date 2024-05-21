@@ -8,7 +8,7 @@ const Dashboard = () => {
       <div className="p-4">
         <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
         <div className="flex flex-wrap -mx-4 pt-7">
-          <div className="flex flex-col gap-10 lg:flex-row lg:flex-wrap w-full px-4 mb-4 justify-center">
+          <div className="flex flex-col gap-10 lg:flex-row lg:flex-wrap w-full mb-4 justify-center">
             <Link
               to={"/dashboard/listmakanan"}
               className="card bg-base-200 shadow-md w-full lg:w-5/12"

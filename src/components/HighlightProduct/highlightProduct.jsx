@@ -13,7 +13,7 @@ const HighlightProduct = ({ title, link, id }) => {
         <Card id={id}/>
       </div>
       <div className="w-full flex justify-center">
-        <Link className="btn bg-base-100" to={link}>Lihat {title} Lainnya</Link>
+        <Link className="btn btn-primary" to={link}>Lihat {title} Lainnya</Link>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AdminLayout from "../../../layouts/AdminLayout";
-import { FaPlus, FaMinus, FaUpload } from "react-icons/fa";
+import { FaPlus, FaMinus} from "react-icons/fa";
 
 const AddMakanan = () => {
   const [ingredients, setIngredients] = useState([{ key: 1 }]);
@@ -35,6 +35,8 @@ const AddMakanan = () => {
 
   return (
     <AdminLayout>
+      <div className="p-4">
+      <h1 className="text-3xl font-bold mb-4">Tambah Makanan</h1>
       <form onSubmit={onSubmit} className="space-y-6">
         <div className="form-control">
           <label className="label" htmlFor="namaMakanan">
@@ -45,19 +47,6 @@ const AddMakanan = () => {
             id="namaMakanan"
             name="namaMakanan"
             className="input input-bordered w-full"
-            required
-          />
-        </div>
-
-        <div className="form-control">
-          <label className="label" htmlFor="gambar">
-            <span className="label-text">Gambar</span>
-          </label>
-          <input
-            type="file"
-            id="gambar"
-            name="gambar"
-            className="input w-full outline-none"
             required
           />
         </div>
@@ -102,7 +91,7 @@ const AddMakanan = () => {
           <button
             type="button"
             onClick={addIngredient}
-            className="btn bg-base-300"
+            className="btn btn-primary"
           >
             <FaPlus className="mr-2" /> Tambah Bahan
           </button>
@@ -135,18 +124,32 @@ const AddMakanan = () => {
           <button
             type="button"
             onClick={addStep}
-            className="btn bg-base-300"
+            className="btn btn-primary"
           >
             <FaPlus className="mr-2" /> Tambah Langkah
           </button>
         </div>
 
         <div className="form-control">
-          <button type="submit" className="btn bg-base-300 w-full">
+          <label className="label" htmlFor="gambar">
+            <span className="label-text">Gambar</span>
+          </label>
+          <input
+            type="file"
+            id="gambar"
+            name="gambar"
+            className="input w-full outline-none"
+            required
+          />
+        </div>
+
+        <div className="form-control">
+          <button type="submit" className="btn btn-primary w-full">
             Submit
           </button>
         </div>
       </form>
+      </div>
     </AdminLayout>
   );
 };

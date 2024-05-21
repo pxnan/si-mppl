@@ -17,11 +17,11 @@ const ListMakanan = () => {
                 <div className="flex gap-4 justify-center mt-5 lg:mt-0">
                   <Link
                     to={`/dashboard/editmakanan/${id}`}
-                    className="btn bg-base-300 w-2/4"
+                    className="btn btn-primary w-2/4"
                   >
                     <FaEdit size={"20px"}/>
                   </Link>
-                  <button className="btn bg-base-300 w-2/4">
+                  <button className="btn btn-primary w-2/4">
                     <FaTrash size={"20px"}/>
                   </button>
                 </div>
