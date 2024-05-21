@@ -1,0 +1,13 @@
+import React from "react";
+
+const JudulMakanan = () => {
+  return (
+    <div className="card bg-base-100 shadow-md">
+      <div className="card-body">
+        <h1 className="text-3xl font-bold">Lalampa Buaya</h1>
+      </div>
+    </div>
+  );
+};
+
+export default JudulMakanan;

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = () => {
+const Card = ({id}) => {
   return (
-    <Link className="card w-96 lg:w-72 bg-base-100 shadow-md lg:transition-transform lg:hover:scale-105">
+    <Link to={`/detail-product/${id}`} className="card w-96 lg:w-72 bg-base-100 shadow-md lg:transition-transform lg:hover:scale-105">
       <figure>
         <img
             className="h-48 w-full object-cover"

@@ -40,7 +40,7 @@ const Navbar = () => {
             <Link to={"/makanan"}>Makanan</Link>
           </li>
           <li>
-            <Link>Jajanan</Link>
+            <Link to={"/jajanan"}>Jajanan</Link>
           </li>
         </ul>
       </div>
@@ -94,7 +94,7 @@ const Navbar = () => {
               <Link to={"/makanan"}>Makanan</Link>
             </li>
             <li>
-              <Link>Jajanan</Link>
+              <Link to={"/jajanan"}>Jajanan</Link>
             </li>
           </ul>
         </div>
