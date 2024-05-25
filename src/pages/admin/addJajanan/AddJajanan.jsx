@@ -1,10 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import AdminLayout from "../../../layouts/AdminLayout";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddJajanan = () => {
   const [ingredients, setIngredients] = useState([{ key: 1 }]);
   const [steps, setSteps] = useState([{ key: 1 }]);
+
+  const navigate = useNavigate();
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("id");
+    const email = sessionStorage.getItem("email");
+    const token = sessionStorage.getItem("token");
+
+    if (!token || !id || !email) {
+      navigate("/login");
+    } else {
+      // Check if token is valid
+      axios
+        .post("http://localhost:5000/checkToken", { id, email, token })
+        .then((response) => {
+          if (response.data.payload.status_code === 200) {
+          } else {
+            navigate("/login");
+          }
+        })
+        .catch((error) => {
+          console.error("Error checking token:", error);
+          navigate("/login");
+        });
+    }
+  }, [navigate]);
 
   const addIngredient = () => {
     const newKey = ingredients.length
@@ -26,17 +55,47 @@ const AddJajanan = () => {
     setSteps(steps.filter((step) => step.key !== key));
   };
 
-  const onSubmit = (event) => {
+  const resetForm = () => {
+    setIngredients([{ key: 1 }]);
+    setSteps([{ key: 1 }]);
+    formRef.current.reset();
+  };
+
+  const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log("Form Data:", data);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/addJajanan",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        alert("Berhasil Menambah Jajanan");
+        resetForm();
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // Handle error
+    }
   };
+
   return (
     <AdminLayout>
       <div className="p-4">
         <h1 className="text-3xl font-bold mb-4">Tambah Jajanan</h1>
-        <form onSubmit={onSubmit} className="space-y-6">
+        <form
+          onSubmit={onSubmit}
+          className="space-y-6"
+          encType="multipart/form-data"
+          ref={formRef}
+        >
           <div className="form-control">
             <label className="label" htmlFor="namaJajanan">
               <span className="label-text">Nama Jajanan</span>
@@ -71,7 +130,7 @@ const AddJajanan = () => {
               <div key={ingredient.key} className="flex space-x-2 mb-2">
                 <input
                   type="text"
-                  name={`ingredients[${ingredient.key}]`}
+                  name={`ingredients[]`}
                   className="input input-bordered w-full"
                   placeholder="Bahan"
                   required
@@ -102,13 +161,13 @@ const AddJajanan = () => {
             </label>
             {steps.map((step, index) => (
               <div key={step.key} className="flex space-x-2 mb-2">
-                <input
-                  name={`steps[${step.key}]`}
+                <textarea
+                  name={`steps[]`}
                   className="textarea textarea-bordered w-full"
                   placeholder="Langkah"
                   rows="2"
                   required
-                ></input>
+                ></textarea>
                 {steps.length > 1 && (
                   <button
                     type="button"
@@ -150,4 +209,3 @@ const AddJajanan = () => {
 };
 
 export default AddJajanan;
-

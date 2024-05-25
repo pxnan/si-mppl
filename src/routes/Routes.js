@@ -10,7 +10,9 @@ import EditMakanan from "../pages/admin/editMakanan/EditMakanan";
 import ListJajanan from "../pages/admin/listJajanan/ListJajanan";
 import ListMakanan from "../pages/admin/listMakanan/ListMakanan";
 import Jajanan from "../pages/jajanan/jajanan";
-import DetailProduct from "../pages/detailProduct/detailProduct";
+import DetailMakanan from "../pages/detailMakanan/detailMakanan";
+import DetailJajanan from "../pages/detailJajanan/detailJajanan";
+import AddAdmin from "../pages/admin/addAdmin/AddAdmin";
 
 const AppRoutes = () =>
 {
@@ -24,7 +26,8 @@ const AppRoutes = () =>
         <Route path="/" element={ <Beranda /> } />
         <Route path="/makanan" element={ <Makanan /> } />
         <Route path="/jajanan" element={ <Jajanan /> } />
-        <Route path="/detail-product/:id" element={ <DetailProduct /> } />
+        <Route path="/detail/makanan/:id" element={ <DetailMakanan /> } />
+        <Route path="/detail/jajanan/:id" element={ <DetailJajanan /> } />
 
         {/* Admin Route */ }
         <Route path="/dashboard" element={ <Dashboard /> } />
@@ -34,6 +37,7 @@ const AppRoutes = () =>
         <Route path="/dashboard/editmakanan/:id" element={ <EditMakanan/> } />
         <Route path="/dashboard/listjajanan" element={ <ListJajanan/> } />
         <Route path="/dashboard/listmakanan" element={ <ListMakanan/> } />
+        <Route path="/dashboard/addadmin" element={ <AddAdmin/> } />
 
       </Routes>
     </Router>

@@ -4,12 +4,13 @@ import Hero from "../../components/Hero/hero";
 import HighlightProduct from "../../components/HighlightProduct/highlightProduct";
 
 const Beranda = () => {
-  const id = "1"
+  const getAllMakanan = 'http://localhost:5000/getAllMakanan'
+  const getAllJajanan = 'http://localhost:5000/getAllJajanan'
   return (
     <GuestLayout>
       <Hero/>
-      <HighlightProduct id={id} title={"Makanan"} link={"/makanan"}/>
-      <HighlightProduct id={id} title={"Jajanan"} link={"/jajanan"}/>
+      <HighlightProduct URL={"/detail/makanan/"} apiURL={getAllMakanan} title={"Makanan"} link={"/makanan"}/>
+      <HighlightProduct URL={"/detail/jajanan/"} apiURL={getAllJajanan} title={"Jajanan"} link={"/jajanan"}/>
     </GuestLayout>
   );
 };

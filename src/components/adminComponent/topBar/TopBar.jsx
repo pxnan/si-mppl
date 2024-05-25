@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 
-const Topbar = ({ toggleSidebar }) => {
+const Topbar = ({ toggleSidebar, email }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
   
     useEffect(() => {
@@ -28,7 +28,7 @@ const Topbar = ({ toggleSidebar }) => {
     return (
       <div className="navbar bg-base-100 shadow-md">
         <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">Admin</a>
+          <a className="btn btn-ghost normal-case text-xl">{email}</a>
         </div>
         <div className="navbar-end">
           <button onClick={toggleDarkMode} className="btn btn-ghost">

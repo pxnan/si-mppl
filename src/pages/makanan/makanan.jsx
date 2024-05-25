@@ -3,10 +3,10 @@ import GuestLayout from '../../layouts/GuestLayout'
 import Product from '../../components/Product/product'
 
 const Makanan = () => {
-  const id = "1"
+  const getAllMakanan = 'http://localhost:5000/getAllMakanan'
   return (
     <GuestLayout>
-        <Product id={id} title={"Makanan"}/>
+        <Product URL={"/detail/makanan/"} apiURL={getAllMakanan} title={"Makanan"}/>
     </GuestLayout>
   )
 }

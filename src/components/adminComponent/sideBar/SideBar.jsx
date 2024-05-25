@@ -1,14 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaListAlt,
   FaPlus,
   FaUtensils,
   FaCandyCane,
+  FaUserPlus,
 } from "react-icons/fa";
+import { TbLogout2 } from "react-icons/tb";
 
 const SideBar = ({ isOpen, toggleSidebar }) => {
+  const navigate = useNavigate();
+  const logOutHandler = () => {
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("token");
+    navigate('/login')
+  };
   return (
     <div
       className={`fixed inset-y-0 left-0 transform ${
@@ -54,7 +63,7 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
               Add Makanan
             </Link>
           </li>
-          <li>
+          <li className="mb-2">
             <Link
               to="/dashboard/addjajanan"
               className="flex items-center py-2 px-4 rounded hover:bg-base-300"
@@ -62,6 +71,24 @@ const SideBar = ({ isOpen, toggleSidebar }) => {
               <FaPlus className="mr-2" />
               Add Jajanan
             </Link>
+          </li>
+          <li className="mb-2">
+            <Link
+              to="/dashboard/addadmin"
+              className="flex items-center py-2 px-4 rounded hover:bg-base-300"
+            >
+              <FaUserPlus className="mr-2" />
+              Add Admin
+            </Link>
+          </li>
+          <li>
+            <button
+              onClick={logOutHandler}
+              className="flex items-center py-2 px-4 rounded hover:bg-base-300"
+            >
+              <TbLogout2 className="mr-2" />
+              LogOut
+            </button>
           </li>
         </ul>
       </div>

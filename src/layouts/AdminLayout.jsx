@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import SideBar from "../components/adminComponent/sideBar/SideBar";
 import Topbar from "../components/adminComponent/topBar/TopBar";
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = ({ children, email }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -17,7 +17,7 @@ const AdminLayout = ({ children }) => {
             isSidebarOpen ? "opacity-100 md:opacity-100" : "opacity-100"
           }`}
         >
-          <Topbar toggleSidebar={toggleSidebar} />
+          <Topbar toggleSidebar={toggleSidebar} email={sessionStorage.getItem("email")}/>
           <main className="flex-1 overflow-y-auto p-4">{children}</main>
         </div>
       </div>
